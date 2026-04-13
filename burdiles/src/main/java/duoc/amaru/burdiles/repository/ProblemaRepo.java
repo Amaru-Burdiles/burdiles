@@ -32,4 +32,14 @@ public class ProblemaRepo {
         }
         return "No encontrado";
     }
+
+    public String deleteProblema(int id) {
+        for (Problema problema : incidencias) {
+            if (problema.getId() == id) {
+                incidencias.remove(problema);
+                return "Eliminado";
+            }
+        }
+        return "No encontrado";
+    }
 }

@@ -24,4 +24,8 @@ public class ProblemaServicio {
     public String updateProblema(int id, Problema newInfo) {
         return problemaRepo.setProblema(id, newInfo);
     }
+
+    public String deleteProblema(int id) {
+        return problemaRepo.deleteProblema(id);
+    }
 }

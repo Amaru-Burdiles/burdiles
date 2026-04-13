@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import duoc.amaru.burdiles.model.Problema;
 import duoc.amaru.burdiles.service.ProblemaServicio;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,5 +38,10 @@ public class ProblemaControlador {
     @PutMapping("/{id}")
     public String putProblema(@PathVariable int id, @RequestBody Problema newInfo) {
         return problemaServicio.updateProblema(id, newInfo);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteProblema(@PathVariable int id) {
+        return problemaServicio.deleteProblema(id);
     }
 }
