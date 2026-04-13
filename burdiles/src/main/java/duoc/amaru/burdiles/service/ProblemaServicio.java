@@ -16,4 +16,8 @@ public class ProblemaServicio {
     public List<Problema> readAll() {
         return problemaRepo.getIncidencias();
     }
+
+    public String createProblema(Problema newProblema) {
+        return problemaRepo.addProblema(newProblema);
+    }
 }

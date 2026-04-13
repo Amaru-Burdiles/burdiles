@@ -14,4 +14,9 @@ public class ProblemaRepo {
     public List<Problema> getIncidencias() {
         return incidencias;
     }
+
+    public String addProblema(Problema newProblema) {
+        incidencias.add(newProblema);
+        return "Añadido";
+    }
 }

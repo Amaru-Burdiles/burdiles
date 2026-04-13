@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import duoc.amaru.burdiles.model.Problema;
 import duoc.amaru.burdiles.service.ProblemaServicio;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -20,6 +23,11 @@ public class ProblemaControlador {
     @GetMapping
     public List<Problema> getIncidencias() {
         return problemaServicio.readAll();
+    }
+    
+    @PostMapping
+    public String postProblema(@RequestBody Problema newProblema) {
+        return problemaServicio.createProblema(newProblema);
     }
     
 }
