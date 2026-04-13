@@ -20,4 +20,8 @@ public class ProblemaServicio {
     public String createProblema(Problema newProblema) {
         return problemaRepo.addProblema(newProblema);
     }
+
+    public String updateProblema(int id, Problema newInfo) {
+        return problemaRepo.setProblema(id, newInfo);
+    }
 }

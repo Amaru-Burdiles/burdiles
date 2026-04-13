@@ -19,4 +19,17 @@ public class ProblemaRepo {
         incidencias.add(newProblema);
         return "Añadido";
     }
+
+    public String setProblema(int id, Problema newInfo) {
+        for (Problema problema : incidencias) {
+            if (problema.getId() == id) {
+                problema.setDescripcion(newInfo.getDescripcion());
+                problema.setEstado(newInfo.getEstado());
+                problema.setPrioridad(newInfo.getPrioridad());
+                problema.setAutor(newInfo.getAutor());
+                return "Actualizado";
+            }
+        }
+        return "No encontrado";
+    }
 }

@@ -11,6 +11,9 @@ import duoc.amaru.burdiles.service.ProblemaServicio;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 
@@ -30,4 +33,8 @@ public class ProblemaControlador {
         return problemaServicio.createProblema(newProblema);
     }
     
+    @PutMapping("/{id}")
+    public String putProblema(@PathVariable int id, @RequestBody Problema newInfo) {
+        return problemaServicio.updateProblema(id, newInfo);
+    }
 }
