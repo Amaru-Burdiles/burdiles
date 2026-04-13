@@ -10,4 +10,8 @@ import duoc.amaru.burdiles.model.Problema;
 @Repository
 public class ProblemaRepo {
     private List<Problema> incidencias = new ArrayList<>();
+
+    public List<Problema> getIncidencias() {
+        return incidencias;
+    }
 }
