@@ -4,9 +4,12 @@ Agregados:
   + Agregar registro
   + Actualizar registro
   + Eliminar registro
+  + Buscar registro por criterios
+  + Manejo de errores
+  + Validaciones
+  + Mensajes de error
 
-Faltan:
-  - Buscar registro por criterio
-  - Manejo de errores
-  - Validaciones
-  - Mensajes de error
+Faltó:
+  - Ordenar por Prioridad
+  - Validar que la prioridad y el sea una de las palabras aporvadas
+
