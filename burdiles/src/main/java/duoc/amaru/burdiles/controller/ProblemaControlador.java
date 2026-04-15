@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import duoc.amaru.burdiles.model.Problema;
 import duoc.amaru.burdiles.service.ProblemaServicio;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,12 +32,12 @@ public class ProblemaControlador {
     }
     
     @PostMapping
-    public String postProblema(@RequestBody Problema newProblema) {
+    public String postProblema(@Valid @RequestBody Problema newProblema) {
         return problemaServicio.createProblema(newProblema);
     }
     
     @PutMapping("/{id}")
-    public String putProblema(@PathVariable int id, @RequestBody Problema newInfo) {
+    public String putProblema(@PathVariable int id, @Valid @RequestBody Problema newInfo) {
         return problemaServicio.updateProblema(id, newInfo);
     }
 
