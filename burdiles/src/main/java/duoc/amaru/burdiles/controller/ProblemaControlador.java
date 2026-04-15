@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
+
 @RestController
 @RequestMapping("api/v1/incidencias")
 public class ProblemaControlador {
@@ -69,5 +70,14 @@ public class ProblemaControlador {
     public List<Problema> getByPrioridad(@PathVariable String altoBajo) {
         return problemaServicio.sortByPrioridad(altoBajo);
     }
-    
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<?> getById(@PathVariable int id) {
+        Problema problema = problemaServicio.getById(id);
+        if (problema != null) {
+            return ResponseEntity.ok(problema);
+        }
+        return ResponseEntity.status(404).body("Incidencia no encontrada");
+    }
+
 }

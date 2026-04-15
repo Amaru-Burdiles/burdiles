@@ -36,4 +36,8 @@ public class ProblemaServicio {
     public List<Problema> sortByPrioridad(String altoBajo) {
         return problemaRepo.getByPrioridad(altoBajo);
     }
+
+    public Problema getById(int id) {
+        return problemaRepo.getById(id);
+    }
 }
