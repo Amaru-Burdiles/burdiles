@@ -21,11 +21,11 @@ public class ProblemaServicio {
         return problemaRepo.addProblema(newProblema);
     }
 
-    public String updateProblema(int id, Problema newInfo) {
+    public boolean updateProblema(int id, Problema newInfo) {
         return problemaRepo.setProblema(id, newInfo);
     }
 
-    public String deleteProblema(int id) {
+    public boolean deleteProblema(int id) {
         return problemaRepo.deleteProblema(id);
     }
 

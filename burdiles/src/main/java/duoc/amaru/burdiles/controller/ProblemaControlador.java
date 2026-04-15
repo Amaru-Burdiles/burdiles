@@ -3,6 +3,7 @@ package duoc.amaru.burdiles.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,23 +28,36 @@ public class ProblemaControlador {
     private ProblemaServicio problemaServicio;
 
     @GetMapping
-    public List<Problema> getIncidencias() {
-        return problemaServicio.readAll();
+    public ResponseEntity<?> getIncidencias() {
+        List<Problema> problemas = problemaServicio.readAll();
+        if (problemas.isEmpty()) {
+            return ResponseEntity.status(404).body("No hay incidencias registradas");
+        }
+        return ResponseEntity.ok(problemas);
     }
     
     @PostMapping
-    public String postProblema(@Valid @RequestBody Problema newProblema) {
-        return problemaServicio.createProblema(newProblema);
+    public ResponseEntity<?> postProblema(@Valid @RequestBody Problema newProblema) {
+        String result = problemaServicio.createProblema(newProblema);
+        return ResponseEntity.ok(result);
     }
     
     @PutMapping("/{id}")
-    public String putProblema(@PathVariable int id, @Valid @RequestBody Problema newInfo) {
-        return problemaServicio.updateProblema(id, newInfo);
+    public ResponseEntity<?> putProblema(@PathVariable int id, @Valid @RequestBody Problema newInfo) {
+        boolean resultado = problemaServicio.updateProblema(id, newInfo);
+        if (resultado) {
+            return ResponseEntity.ok("Incidencia actualizada correctamente");
+        }
+        return ResponseEntity.status(404).body("Incidencia no encontrada");
     }
 
     @DeleteMapping("/{id}")
-    public String deleteProblema(@PathVariable int id) {
-        return problemaServicio.deleteProblema(id);
+    public ResponseEntity<?> deleteProblema(@PathVariable int id) {
+        boolean resultado = problemaServicio.deleteProblema(id);
+        if (resultado) {
+            return ResponseEntity.ok("Incidencia eliminada correctamente");
+        }
+        return ResponseEntity.status(404).body("Incidencia no encontrada");
     }
 
     @GetMapping("/user/{name}")

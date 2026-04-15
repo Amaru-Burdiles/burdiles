@@ -11,36 +11,48 @@ import duoc.amaru.burdiles.model.Problema;
 public class ProblemaRepo {
     private List<Problema> incidencias = new ArrayList<>();
 
+    // Mostrar todo
     public List<Problema> getIncidencias() {
         return incidencias;
     }
 
+    // Agregar incidencia
     public String addProblema(Problema newProblema) {
         incidencias.add(newProblema);
-        return "Añadido";
+        return "Incidencia añadida con ID: " + newProblema.getId();
     }
 
-    public String setProblema(int id, Problema newInfo) {
+    // Buscar por ID
+    public Problema getById(int id) {
         for (Problema problema : incidencias) {
             if (problema.getId() == id) {
-                problema.setDescripcion(newInfo.getDescripcion());
-                problema.setEstado(newInfo.getEstado());
-                problema.setPrioridad(newInfo.getPrioridad());
-                problema.setAutor(newInfo.getAutor());
-                return "Actualizado";
+                return problema;
             }
         }
-        return "No encontrado";
+        return null;
     }
 
-    public String deleteProblema(int id) {
-        for (Problema problema : incidencias) {
-            if (problema.getId() == id) {
-                incidencias.remove(problema);
-                return "Eliminado";
-            }
+    // Actualizar por ID
+    public boolean setProblema(int id, Problema newInfo) {
+        Problema existe = getById(id);
+        if (existe == null) {
+            return false;
         }
-        return "No encontrado";
+        existe.setDescripcion(newInfo.getDescripcion());
+        existe.setEstado(newInfo.getEstado());
+        existe.setPrioridad(newInfo.getPrioridad());
+        existe.setAutor(newInfo.getAutor());
+        return true;
+    }
+
+    // Eliminar por ID
+    public boolean deleteProblema(int id) {
+        Problema existe = getById(id);
+        if (existe == null) {
+            return false;
+        }
+        incidencias.remove(existe);
+        return true;
     }
 
     public List<Problema> getByUser(String name) {
