@@ -28,4 +28,8 @@ public class ProblemaServicio {
     public String deleteProblema(int id) {
         return problemaRepo.deleteProblema(id);
     }
+
+    public List<Problema> findByUser(String name) {
+        return problemaRepo.getByUser(name);
+    }
 }

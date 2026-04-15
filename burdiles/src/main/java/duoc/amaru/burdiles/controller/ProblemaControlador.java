@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
-
 @RestController
 @RequestMapping("api/v1/incidencias")
 public class ProblemaControlador {
@@ -44,4 +43,10 @@ public class ProblemaControlador {
     public String deleteProblema(@PathVariable int id) {
         return problemaServicio.deleteProblema(id);
     }
+
+    @GetMapping("/user/{name}")
+    public List<Problema> getProblemasByUser(@PathVariable String name) {
+        return problemaServicio.findByUser(name);
+    }
+    
 }

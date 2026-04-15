@@ -42,4 +42,14 @@ public class ProblemaRepo {
         }
         return "No encontrado";
     }
+
+    public List<Problema> getByUser(String name) {
+        List<Problema> resultados = new ArrayList<>();
+        for (Problema problema : incidencias) {
+            if (problema.getAutor().equalsIgnoreCase(name)) {
+                resultados.add(problema);
+            }
+        }
+        return resultados;
+    }
 }
