@@ -32,4 +32,8 @@ public class ProblemaServicio {
     public List<Problema> findByUser(String name) {
         return problemaRepo.getByUser(name);
     }
+
+    public List<Problema> sortByPrioridad(String altoBajo) {
+        return problemaRepo.getByPrioridad(altoBajo);
+    }
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
+
 @RestController
 @RequestMapping("api/v1/incidencias")
 public class ProblemaControlador {
@@ -47,6 +48,11 @@ public class ProblemaControlador {
     @GetMapping("/user/{name}")
     public List<Problema> getProblemasByUser(@PathVariable String name) {
         return problemaServicio.findByUser(name);
+    }
+    
+    @GetMapping("/sort/{altoBajo}")
+    public List<Problema> getByPrioridad(@PathVariable String altoBajo) {
+        return problemaServicio.sortByPrioridad(altoBajo);
     }
     
 }

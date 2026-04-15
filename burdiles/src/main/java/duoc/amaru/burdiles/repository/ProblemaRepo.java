@@ -52,4 +52,15 @@ public class ProblemaRepo {
         }
         return resultados;
     }
+
+    public List<Problema> getByPrioridad(String altoBajo) {
+        List<Problema> resultados = new ArrayList<>();
+        for (Problema problema : incidencias) {
+            if (problema.getPrioridad().equalsIgnoreCase(altoBajo)) {
+                resultados.add(problema);
+            }
+            
+        }
+        return resultados;
+    }
 }
